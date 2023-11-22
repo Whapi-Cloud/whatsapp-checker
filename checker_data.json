@@ -1,4 +1,1 @@
-{
-    "token": "YOUR-TOKEN",
-    "phone": "PHONE-FOR-CHECK"
-}
+{"token":"YOUR-TOKEN","last_limit_refresh":0,"daily_limit":1000,"refreshed_limit":1000}
