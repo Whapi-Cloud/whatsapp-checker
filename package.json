@@ -1,5 +1,27 @@
 {
   "devDependencies": {
     "@types/node": "^20.9.4"
-  }
+  },
+  "name": "whatsapp-checker",
+  "description": "This script is designed to check if phone numbers exist in WhatsApp. It analyzes the numbers specified in the `phones.json` file and classifies them into existing numbers in WhatsApp (exist_phones) and non-existing numbers (not_exist_phones). This checker is designed to check numbers for whatsapp installed on them. Validate any numbers from any country. Identify which phone numbers are active and those that are not able to receive whatsapp messages. Optimize your resources and save time and money.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "ts-node": "^10.9.2",
+    "undici-types": "^5.26.5"
+  },
+  "scripts": {
+    "start": "node --inspect -r ts-node/register index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Whapi-Cloud/whatsapp-checker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Whapi-Cloud/whatsapp-checker/issues"
+  },
+  "homepage": "https://github.com/Whapi-Cloud/whatsapp-checker#readme"
 }
