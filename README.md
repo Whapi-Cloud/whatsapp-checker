@@ -13,12 +13,8 @@ This script is designed to check if phone numbers exist in WhatsApp. It analyzes
 
 ### Customization
 
-1. open the `phones.json` file.
-2. In the `check_phones` array, add the phone numbers you want to check. For example:
-   ```json
-   {
-     "`check_phones`: [ "number1", "number2".]
-   }
+1. open the `phones.csv` file.
+2. Write down the phone numbers you need to check. One line - one phone.
 
 ## Requirements
 This tool was created using our public API that you can access too with your [Whapi.Cloud](https://whapi.cloud) account. It takes 3 steps to get started to use WhatsApp API with Whapi.Cloud. You will need a phone with WhatsApp Business or regular WhatsApp. Access is granted for 5 days free of charge. Pair your number via QR code in your account
@@ -30,10 +26,9 @@ It also shows the limits we recommend to use. `daily_limit` is how many checks a
 Open a terminal or command prompt in the folder with the script.
 Run the following commands to install the necessary dependencies and compile the script:
 `npm i`
-`npx tsc`
 
 Run the script with the command:
-`node checker.js`
+`npm run start`
 
 ## Getting Started
 https://support.whapi.cloud/help-desk/getting-started/getting-started
