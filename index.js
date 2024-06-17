@@ -9,7 +9,7 @@ async function start() {
   checkFiles();
   const isRefresh = canRefreshLimit();
   if (isRefresh) refreshLimit(); // if refresh condition is true - refresh limit
-  const phones = csv_module.getPhonesFromCSV(DBFiles.phones);
+  let phones = csv_module.getPhonesFromCSV(DBFiles.phones);
   if (phones.length === 0) throw "Phones file is empty!";
   const configData = fs.readFileSync(DBFiles.config, "utf-8");
   const config = JSON.parse(configData);
@@ -30,9 +30,8 @@ async function start() {
 
   if (phones.length > config.daily_limit) {
     // if the number of phones being checked exceeds the limit, check only those that fit into it.
-    const checkPhonesLength = phones.length;
-    const diff = checkPhonesLength - config.daily_limit;
-    unLimittedPhones = phones.splice(phones.length - 1, diff);
+    unLimittedPhones = phones.splice(config.daily_limit, phones.length-1);
+    phones = phones.splice(0, config.daily_limit);
     newLimit = 0;
   } else {
     // else, decrease the limit by the difference.
