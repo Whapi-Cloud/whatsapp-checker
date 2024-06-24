@@ -1,1 +1,6 @@
-{"token":"YOUR-TOKEN","last_limit_refresh":0,"daily_limit":0,"refreshed_limit":1000}
+{
+  "token":"YOUR-TOKEN",  // Whapi channel token.
+  "refreshed_limit": 1000, // Maximum number of checks per day.
+  "last_limit_refresh": 0, // Date of last update of limits. (Filled automatically).
+  "daily_limit":0 // Remaining number of checks per day (Filled automatically).
+}
