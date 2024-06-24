@@ -2,7 +2,7 @@
 
 ## Description
 
-This script is designed to check if phone numbers exist in WhatsApp. It analyzes the numbers specified in the `phones.json` file and classifies them into existing numbers in WhatsApp (exist_phones) and non-existing numbers (not_exist_phones). This checker is designed to check numbers for whatsapp installed on them. Validate any numbers from any country. Identify which phone numbers are active and those that are not able to receive whatsapp messages. Optimize your resources and save time and money.
+This script is designed to check if phone numbers exist in WhatsApp. It analyzes the numbers specified in the `phones.csv` file and classifies them into existing numbers in WhatsApp (exist_phones) and non-existing numbers (not_exist_phones). This checker is designed to check numbers for whatsapp installed on them. Validate any numbers from any country. Identify which phone numbers are active and those that are not able to receive whatsapp messages. Optimize your resources and save time and money.
 
 ### How to use
 
@@ -19,8 +19,8 @@ This script is designed to check if phone numbers exist in WhatsApp. It analyzes
 ## Requirements
 This tool was created using our public API that you can access too with your [Whapi.Cloud](https://whapi.cloud) account. It takes 3 steps to get started to use WhatsApp API with Whapi.Cloud. You will need a phone with WhatsApp Business or regular WhatsApp. Access is granted for 5 days free of charge. Pair your number via QR code in your account
 
-> In the file checker_data.json you need to insert the token from your personal account Whapi.Cloud, as well as the number you want to check.
-It also shows the limits we recommend to use. `daily_limit` is how many checks are left, and `refreshed_limit` is how much of the limit is set on refresh.
+> In the file `config.json` you need to insert the token from your personal account Whapi.Cloud, as well as the number you want to check.
+It also shows the limits we recommend to use. `daily_limit` is how many checks are left (Filled automatically), and `refreshed_limit` is how much of the limit is set on refresh. `last_limit_refresh` shows the date the limits were last updated (Filled automatically).
 
 ## Running the script
 Open a terminal or command prompt in the folder with the script.
