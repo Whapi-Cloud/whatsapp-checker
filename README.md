@@ -20,7 +20,7 @@ This script is designed to check if phone numbers exist in WhatsApp. It analyzes
 This tool was created using our public API that you can access too with your [Whapi.Cloud](https://whapi.cloud) account. It takes 3 steps to get started to use WhatsApp API with Whapi.Cloud. You will need a phone with WhatsApp Business or regular WhatsApp. Access is granted for 5 days free of charge. Pair your number via QR code in your account
 
 > In the file `config.json` you need to insert the token from your personal account Whapi.Cloud, as well as the number you want to check.
-It also shows the limits we recommend to use. `daily_limit` is how many checks are left (Filled automatically), and `refreshed_limit` is how much of the limit is set on refresh. `last_limit_refresh` shows the date the limits were last updated (Filled automatically).
+It also shows the limits we recommend to use. `daily_limit` is how many checks are left (Filled automatically), and `refreshed_limit` is how much of the limit is set on refresh. `last_limit_refresh` shows the date the limits were last updated (Filled automatically). The `delay` argument determines the frequency of checks. And `checks_per_delay` is responsible for the number of numbers that will be checked during the check.
 
 ## Running the script
 Open a terminal or command prompt in the folder with the script.
