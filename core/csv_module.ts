@@ -2,7 +2,7 @@ import * as fs from "fs";
 
 export class CSVModule {
   writeCSV(data: { phone: string; status: string }[], filePath: string) {
-    let writeString = "";
+    let writeString = "Phone,Status\n";
     for (let i = 0; i < data.length; i++)
       writeString += `${data[i].phone},${data[i].status}\n`;
 

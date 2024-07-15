@@ -2,5 +2,7 @@
   "token":"YOUR-TOKEN",
   "refreshed_limit": 1000,
   "last_limit_refresh": 0,
-  "daily_limit":0
+  "daily_limit": 0,
+  "delay": 10000,
+  "checks_per_delay": 5
 }

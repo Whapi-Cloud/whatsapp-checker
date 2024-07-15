@@ -2,6 +2,7 @@ const { checkFiles, DBFiles } = require("./core/files");
 const { CSVModule } = require("./core/csv_module");
 const { Channel } = require("./core/channel");
 const fs = require("fs");
+const { Checker } = require("./core/checker");
 
 const csv_module = new CSVModule();
 
@@ -10,57 +11,18 @@ async function start() {
   const isRefresh = canRefreshLimit();
   if (isRefresh) refreshLimit(); // if refresh condition is true - refresh limit
   let phones = csv_module.getPhonesFromCSV(DBFiles.phones);
+
   if (phones.length === 0) throw "Phones file is empty!";
   const configData = fs.readFileSync(DBFiles.config, "utf-8");
   const config = JSON.parse(configData);
-
+  console.log(`||| Will be check ${config.daily_limit <= phones.length ? config.daily_limit : phones.length} phones |||`)
   const channel = new Channel(config.token);
-  await channel.checkHealth();
-
-  let unLimittedPhones = [];
-  let newLimit;
-  if (!config.token || config.token === "") {
-    // if token is empty - log error
-    throw "Token is empty";
-  }
-  if (config.daily_limit === 0) {
-    // if limit equal 0 - log error
-    throw "Your limit is done!";
-  }
-
-  if (phones.length > config.daily_limit) {
-    // if the number of phones being checked exceeds the limit, check only those that fit into it.
-    unLimittedPhones = phones.splice(config.daily_limit, phones.length-1);
-    phones = phones.splice(0, config.daily_limit);
-    newLimit = 0;
-  } else {
-    // else, decrease the limit by the difference.
-    const checkPhonesLength = phones.length;
-    const diff = config.daily_limit - checkPhonesLength;
-    newLimit = diff;
-  }
-  config.daily_limit = newLimit;
-  const writeConfigData = JSON.stringify(config);
-  fs.writeFileSync(DBFiles.config, writeConfigData, "utf-8"); // save decreased limit.
-  const checkedPhones = await channel.checkPhones(phones);
-  const writeData = checkedPhones.contacts.map((elem) => {
-    return { phone: elem.input, status: elem.status };
-  });
-  console.log(checkedPhones);
-  csv_module.writeCSV(writeData, DBFiles.result);
-  if (unLimittedPhones > 0) {
-    console.log(
-      "The limit is over! Not all numbers have been verified! Check phones.json file."
-    );
-    const uncheckedPhones = unLimittedPhones.map((elem) => {
-      return { phone: elem, status: "limited" };
-    });
-    csv_module.writeCSV(uncheckedPhones, DBFiles.unlimitted_phones);
-  }
+  const checker = new Checker(channel, phones, config.daily_limit);
+  await checker.start(config.delay, config.checks_per_delay);
 }
 
 start()
-  .then(() => console.log("Started"))
+  .then(() => console.log("In progress"))
   .catch((err) => console.log(err));
 
 function refreshLimit() {
