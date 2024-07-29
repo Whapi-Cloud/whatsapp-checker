@@ -1,10 +1,11 @@
 import * as fs from "fs";
 
 export enum DBFiles {
-  "result" = "result.csv",
   "phones" = "phones.csv",
   "unlimitted_phones" = "unlimited.csv",
-  "config" = "config.json"
+  "config" = "config.json",
+  "valid_phones" = "valid.csv",
+  "invalid_phones" = "invalid.csv"
 }
 
 type ConfigFileData = {
@@ -21,13 +22,15 @@ export function checkFiles() {
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
     const path = DBFiles[key];
-    if (key === "config") continue;
-    if(key === "phones") continue
-    if(key === "result"){
+    if (key === "config" || key === "phones") continue;
+    if(key === "valid_phones" || key === "invalid_phones"){
       fs.writeFileSync(path, "Phone,Status");
       continue;
     }
-    if(key === "unlimitted_phones")continue
+    if(key === "unlimitted_phones"){
+      fs.writeFileSync(path, "Phone");
+      continue;
+    }
     fs.writeFile(path, "[]", function (err) {
       if (err) throw err;
       console.log(`${key} is created succesfully.`);

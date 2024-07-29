@@ -9,6 +9,14 @@ export class CSVModule {
     fs.writeFileSync(filePath, writeString, "utf-8");
   }
 
+  writeUnlimittedCsv(data: string[], filePath: string) {
+    let writeString = "Phone\n";
+    for (let i = 0; i < data.length; i++)
+      writeString += `${data[i]}\n`;
+
+    fs.writeFileSync(filePath, writeString, "utf-8");
+  }
+
   readCSVRaw(filePath: string) {
     return fs.readFileSync(filePath, "utf-8");
   }
