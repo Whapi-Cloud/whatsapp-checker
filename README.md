@@ -30,6 +30,12 @@ Run the following commands to install the necessary dependencies and compile the
 Run the script with the command:
 `npm run start`
 
+## Result
+When the script finishes, you will get two files with results: invalid.csv and valid.csv, where numbers will be filtered accordingly. 
+The `invalid.csv` file will contain numbers that do not have WhatsApp. 
+The `valid.csv` file will contain numbers that have WhatsApp.
+The `unlimited.csv` file may appear if there are numbers left that are outside the daily limit you have set in the settings. This will allow you to continue working on checking numbers using this file.
+
 ## Getting Started
 https://support.whapi.cloud/help-desk/getting-started/getting-started
 ### How to Connect to Whapi.Cloud
@@ -39,3 +45,4 @@ After registration you will immediately have access to a test channel with a sma
 To connect your phone, use the QR code available when you click on your trial channel in your personal account. Then open WhatsApp on your mobile device, go to Settings -> Connected devices -> Connect device -> Scan QR code.
 
 In the second and third steps, the service will ask you to customize the channel: write its name for your convenience, set webhooks, change settings. All these steps can be skipped, and we will come back to webhooks a little later. After launching, you will find in the center block under the information about limits, your API KEY, that is Token. This token will be used to authenticate your API requests. Generally, it's added to the request headers as a Bearer Token or simply as a request parameter, depending on the API method you're using.
+
